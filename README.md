@@ -1,5 +1,11 @@
 # quick-rag
-A quick and simple RAG implementation
+A quick and simple RAG implementation, reads from markdown and text data sources and provides a conversational chat bot. 
+
+TODO:
+- Add memory, so the chatbot can remember details from the conversation.
+- Wrap the ChatBot into a class that supports multiple concurrent conversations.
+- Implement a client / server architecture to allow multiple concurrent conversations.
+- Add a UI to simplify the interaction with the users.
 
 ## Instructions
 1. Place your OpenAI and LangChain API keys in `RAGConfig.py`
