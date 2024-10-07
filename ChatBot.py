@@ -13,8 +13,8 @@ EnvironmentVariables.setEnvironmentVariables()
 def run_query(query: str, database: Chroma, model: ChatOpenAI):
     # Query the database and retrieve the top 3 most relevant results
     results = database.similarity_search_with_relevance_scores(query, k=5)
-    
-    if len(results) == 0 or results[0][1] < SIMILARITY_THRESHOLD:
+    results = [result for result in results if result[1] > SIMILARITY_THRESHOLD]
+    if len(results) == 0:
         return "I'm sorry, I don't have enough information to give an accurate answer.", []
     
     # Extract context and sources from results
@@ -46,7 +46,7 @@ def main():
             print("Good bye!")
             break
 
-        if query == ".toggleDebug":
+        if query == ".debug":
             debug = not debug
             print(f"Debug is: {debug}\n")
             continue
