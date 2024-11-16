@@ -1,26 +1,3 @@
-import os
-
-# Environment variables and API keys
-class EnvironmentVariables:
-    __EnvironmentVariablesDict = {
-        "LANGCHAIN_TRACING_V2": "true",
-        "LANGCHAIN_API_KEY": "<PLACE YOUR LANGCHAIN API KEY HERE>",
-        "OPENAI_API_KEY": "<PLACE YOUR OPENAI API KEY HERE>",
-    }
-
-    LANGCHAIN_TRACING_V2 = __EnvironmentVariablesDict["LANGCHAIN_TRACING_V2"]
-    LANGCHAIN_API_KEY = __EnvironmentVariablesDict["LANGCHAIN_API_KEY"]
-    OPENAI_API_KEY = __EnvironmentVariablesDict["OPENAI_API_KEY"]
-
-    @staticmethod
-    def keys():
-        return [attr for attr in dir(EnvironmentVariables) if not callable(getattr(EnvironmentVariables, attr)) and not attr.startswith("__") and attr != "keys" and attr != "setEnvironmentVariables"]
-    
-    @staticmethod
-    def setEnvironmentVariables():
-        for key in EnvironmentVariables.__EnvironmentVariablesDict:
-            os.environ[key] = EnvironmentVariables.__EnvironmentVariablesDict[key]
-
 # Database location            
 DB_PATH = "chroma"
 

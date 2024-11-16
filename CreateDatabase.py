@@ -3,14 +3,16 @@ import shutil
 
 from RAGConfig import DB_PATH
 from RAGConfig import DOCUMENTS_PATH
-from RAGConfig import EnvironmentVariables
 
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-EnvironmentVariables.setEnvironmentVariables()
+from dotenv import load_dotenv
+
+# Load API keys
+load_dotenv()
 
 def save_to_database(chunks, db_path):
     if os.path.exists(db_path):

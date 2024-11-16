@@ -1,14 +1,16 @@
 from RAGConfig import DB_PATH
 from RAGConfig import PROMPT_TEMPLATE
 from RAGConfig import SIMILARITY_THRESHOLD
-from RAGConfig import EnvironmentVariables
 
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain.prompts import ChatPromptTemplate
 
-EnvironmentVariables.setEnvironmentVariables()
+from dotenv import load_dotenv
+
+# Load API keys
+load_dotenv()
 
 def run_query(query: str, database: Chroma, model: ChatOpenAI):
     # Query the database and retrieve the top 3 most relevant results
