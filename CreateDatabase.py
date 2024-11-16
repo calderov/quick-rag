@@ -27,7 +27,7 @@ def extract_chunks(documents):
     return chunks
 
 def load_documents(documents_path):
-    loader = DirectoryLoader(documents_path, glob=["*.md", "*.txt"])
+    loader = DirectoryLoader(documents_path, glob=["*.md", "*.txt", "*.pdf"])
     documents = loader.load()
     return documents
 
